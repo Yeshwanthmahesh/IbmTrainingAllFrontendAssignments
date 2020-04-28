@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var num=1234;
+	var reverse=0;
+	var lastdig;
+	document.write("Original Number:" + num + "<br>");
+	while(num>0){
+		lastdig = num%10;
+		reverse = reverse*10 + lastdig;
+		num = parseInt(num/10);
+	}
+	document.write("Reversed Number:" + reverse);
+</script>
+</body>
+</html>

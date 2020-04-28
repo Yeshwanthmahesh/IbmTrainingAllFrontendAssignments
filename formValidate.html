@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validating Forms with JS</title>
+	<style type="text/css">
+		#username,#useradd,#phon,#mail{
+			color: red;
+			/*float: right;
+			text-align: top;*/
+		}
+
+		/*#div1{
+			width: 25%
+		}*/
+	</style>
+</head>
+<body><div id="div1">
+<form action="processData.html" onsubmit="return validateData();">
+	<input type="text" id="userName" placeholder="Your Name"><p id="username"></p><br>
+	<input type="text" id="userAddress" placeholder="Your Address"><p id="useradd"></p><br>
+	<input type="text" id="userPhone" placeholder="Your Phone"><p id="phon"></p><br>
+	<input type="text" id="usermail" placeholder="abc@xyz.com"><p id="mail"></p><br>
+	<input type="radio" id="gend" name="gender">Male<br>
+	<input type="radio" id="gend" name="gender">Female<p id="gender"></p><br>
+	<input type="submit" value="REGISTER"> 
+</form>
+</div>
+
+
+
+<script type="text/javascript">
+	function validateData(){
+		var userName = document.getElementById("userName");
+		var userAddress = document.getElementById("userAddress");
+		var userPhone = document.getElementById("userPhone");
+		if(userName.value == ""){
+			document.getElementById("username").innerHTML= "We don't like blank names..."
+			// document.write("<p>We don't like blank names...<p>");
+			userName.focus();
+			return false;
+		}
+		else if(!isNaN(userName.value)){
+			document.getElementById("useradd").innerHTML= "Names can't include digits"
+			// alert("Names can't include digits");
+			userName.value = "";
+			userName.focus();
+			return false;
+		}
+		else if(!userAddress.value.length){
+			document.getElementById("useradd").innerHTML= "Please Enter the Address"
+			// alert("Please Enter the Address");
+			userAddress.focus();
+			return false;
+		}
+
+		else if(!userPhone.value.length){
+			document.getElementById("phon").innerHTML= "Phone Number is required"
+			// alert("Phone Number is required");
+			userPhone.focus();
+			return false;
+		}
+		else if(isNaN(userPhone.value)){
+			document.getElementById("phon").innerHTML= "Please enter the correct phone number"
+			// alert("Please enter the correct phone number");
+			userPhone.value = "";
+			userPhone.focus();
+			return false;
+		}
+		else if(!usermail.value.length){
+			document.getElementById("mail").innerHTML= "EMail is required"
+			// alert("Phone Number is required");
+			usermail.focus();
+			return false;
+		}
+		else if(document.getElementById("gend").checked = false){
+			document.getElementById("gend").innerHTML= "Please Chech either of these"
+			// alert("Phone Number is required");
+			usermail.focus();
+			return false;
+		}
+		return true;
+
+	}
+</script>
+
+</body>
+</html>
